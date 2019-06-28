@@ -27,17 +27,22 @@ void print_List(List* l){
 }
 
 List* reverse_List(List* l){
-	if(l -> next == NULL){
-		return l;
-	}
 	List* r_l = create_List(l -> value,NULL);
-	List* suiv = l ;
-	int len = List_len(suiv) - 1;
-	for(int i = 0; i < len; i++){
-		suiv = suiv -> next;
-		r_l = create_List(suiv -> value, r_l);
+	int len = List_len(l);
+	for(int i = 1; i < len; i++){
+		l = l -> next;
+		r_l = create_List(l -> value, r_l);
 	}
 	return r_l;
 }
 
 List* concatene_List(List* head, List* tail){
+	List* r_head = reverse_List(head);
+	List* concat = tail;
+	while(r_head -> next != NULL){
+		concat = create_List(r_head -> value, concat);
+		r_head = r_head -> next;
+	}
+	concat = create_List(r_head -> value,concat);
+	return concat;
+}

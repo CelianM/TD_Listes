@@ -13,4 +13,7 @@ int main(){
 	List* r_l = reverse_List(l);
 	printf("Liste inversée : ");
 	print_List(r_l);
+	List* li = concatene_List(l,r_l);
+	printf("Palindrome : ");
+	print_List(li);
 }
