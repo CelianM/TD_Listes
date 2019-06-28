@@ -10,15 +10,15 @@ List* create_List(int v, List* suivant){
 	}
 
 int List_len(List* l){
-	if(l -> next == NULL){
-		return 1;
+	if(l == NULL){
+		return 0;
 	}
 	return 1 + List_len(l -> next);
 }
 
 void print_List(List* l){
-	if(l -> next == NULL){
-		printf("%d\n",l -> value);
+	if(l == NULL){
+		printf("\n");
 	}
 	else{
 		printf("%d;",l -> value);
@@ -27,6 +27,9 @@ void print_List(List* l){
 }
 
 List* reverse_List(List* l){
+	if(l == NULL){
+		return NULL;
+	}
 	List* r_l = create_List(l -> value,NULL);
 	int len = List_len(l);
 	for(int i = 1; i < len; i++){
@@ -39,10 +42,9 @@ List* reverse_List(List* l){
 List* concatene_List(List* head, List* tail){
 	List* r_head = reverse_List(head);
 	List* concat = tail;
-	while(r_head -> next != NULL){
+	while(r_head != NULL){
 		concat = create_List(r_head -> value, concat);
 		r_head = r_head -> next;
 	}
-	concat = create_List(r_head -> value,concat);
 	return concat;
 }
