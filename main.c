@@ -8,5 +8,9 @@ int main(){
 	l = create_List(3,l);
 	int len = List_len(l);
 	printf("La liste est de longueur %d\n",len);
+	printf("Liste : ");
 	print_List(l);
+	List* r_l = reverse_List(l);
+	printf("Liste inversée : ");
+	print_List(r_l);
 }
